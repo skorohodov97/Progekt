@@ -1,10 +1,11 @@
 ﻿
 #define CURL_STATICLIB
-#define LC_ALL 0
 #include <iostream>
 #include<string>
-#include <windows.h>
+#include <stdio.h>
+#include <clocale>
 #include "curl/curl.h"
+//#include <array_ops.h>
 #ifdef _DEBUG
 #pragma comment (lib,"curl/libcurl_a_debug.lib")
 #else
@@ -26,7 +27,7 @@ static size_t my_write(void* buffer, size_t size, size_t nmemb, void* param)
 
 int main()
 {
-    setlocale(LC_ALL, "Ressian");
+    setlocale(LC_ALL, "ru_RU.UTF8");
     string result;
     CURL* curl;
     curl_global_init(CURL_GLOBAL_DEFAULT);
@@ -43,6 +44,8 @@ int main()
         }
     }
     curl_global_cleanup();
-    cout << result << "\n\n";
+   
+    cout <<result << "\n\n";
+    
 }
 
