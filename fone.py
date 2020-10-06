@@ -54,7 +54,7 @@ class LoginDialog(wx.Dialog):
             dc.SetClippingRect(rect)
 
         dc.Clear()
-        bmp = wx.Bitmap("C:\универ\Проэкт\obhaga.jpg")
+        bmp = wx.Bitmap("obhaga.jpg")
         dc.DrawBitmap(bmp, 0, 0)
 
     def onLogin(self, event):
@@ -101,7 +101,7 @@ class MyPanel(wx.Panel):
             dc.SetClippingRect(rect)
 
         dc.Clear()
-        bmp = wx.Bitmap("C:\универ\Проэкт\mifi.jpg")
+        bmp = wx.Bitmap("mifi.jpg")
         dc.DrawBitmap(bmp, 0, 0)
 
 
