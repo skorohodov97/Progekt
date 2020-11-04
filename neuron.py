@@ -5,6 +5,7 @@ rb = xlrd.open_workbook('seb.xls')
 sheet = rb.sheet_by_index(0)
 write_book = xlcopy(rb)
 write_sheet = write_book.get_sheet(1)
+d=int(sheet.row_values(0)[14])
 def sigmoid(x):
     # Функция активации sigmoid:: f(x) = 1 / (1 + e^(-x))
     return 1 / (1 + np.exp(-x))
@@ -27,7 +28,6 @@ class OurNeuralNetwork:
         - 2 входа
         - скрытый слой с двумя нейронами (h1, h2)
         - слой вывода с одним нейроном (o1)
-
     *** ВАЖНО ***:
     Код ниже написан как простой, образовательный. НЕ оптимальный.
     Настоящий код нейронной сети выглядит не так. НЕ ИСПОЛЬЗУЙТЕ этот код.
@@ -136,25 +136,29 @@ class OurNeuralNetwork:
 
 # Определение набора данных
 data = np.array([
-    [3.6, 4, 0, 5],
-    [3.6, 4, 1, -7],
+    [8, 4, 0, 5],
+    [8, 4, 1, -7],
     [-0.05, -8, 0,-3],
     [-0.05, -8, 1, 0],
     [1.5, 3, 0, 7],
     [1.5, 3, 1, 6],
     [-9, -9, 0, 2],
     [-9, -9, 1, -1],
+    [-6, -6, 0, 2],
+    [-3, -3, 0, 2],
 ])
 
 all_y_trues = np.array([
+    0.85,
+    0.85,
+    0.4,
+    0.7,
     0.8,
-    0,
-    0.6,
-    0,
     1,
     0,
     0.6,
-    0,
+    0.2,
+    0.4
 ])
 
 # Тренируем нашу нейронную сеть!
@@ -172,9 +176,9 @@ d4=0
 m5=0
 d5=0
 
-for number in range(48):
+for number in range(d):
     if number!=0:
-        f1=sheet.row_values(number)[0]
+        f1=str(sheet.row_values(number)[0])
         f2=int(sheet.row_values(number)[6])
         f3=int(sheet.row_values(number)[7])
         f4=int(sheet.row_values(number)[3])
