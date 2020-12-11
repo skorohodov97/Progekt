@@ -1,0 +1,23 @@
+import xlrd, xlwt
+from xlutils.copy import copy as xlcopy
+def delete():
+    rb = xlrd.open_workbook('seb.xls')
+    sheet = rb.sheet_by_index(0)
+    sheet1 = rb.sheet_by_index(2)
+    write_book = xlcopy(rb)
+    write_sheet = write_book.get_sheet(0)
+    write_sheet1 = write_book.get_sheet(1)
+    write_sheet2 = write_book.get_sheet(2)
+    d = int(sheet1.row_values(0)[3]) + 1
+    for i in range(12):
+        for y in range(1, d):
+            write_sheet.write(y, i, '')
+            if i == 0 or i == 1 or i == 2 or i == 3:
+                write_sheet1.write(y, i, '')
+    write_sheet2.write(0, 3, 0)
+    for i in range(3, 12):
+        if i % 2 != 0:
+            write_sheet2.write(i, 1, '')
+            write_sheet2.write(i, 2, '')
+
+    write_book.save('seb.xls')
